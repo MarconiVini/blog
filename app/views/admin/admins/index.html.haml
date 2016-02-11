@@ -1,0 +1,32 @@
+- entity = Admin
+%table.table.table-hover
+  %tr
+    %th
+      =entity.human_attribute_name(:name)
+    %th
+      =entity.human_attribute_name(:email)    
+    %th
+      =entity.human_attribute_name(:created_at)
+    %th
+      Editar  
+    %th
+      Deletar
+  - @admins.each do |admin|
+    %tr
+      %td
+        =admin.name
+      %td
+        =admin.email
+      %td
+        =admin.created_at
+      %td
+        =link_to "editar", edit_admin_admin_path(admin), class: "btn btn-default"
+      %td
+        =button_to "deletar", admin_admin_path(admin), method: :delete, data: { confirm: "está certo disso?" }, class: "btn btn-danger"
+
+  %tr
+    %td
+      =paginate @admins
+
+=button_to "Novo admin", new_admin_admin_path, method: :get, css: "btn btn-default"
+

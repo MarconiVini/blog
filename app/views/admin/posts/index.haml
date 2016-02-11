@@ -1,0 +1,14 @@
+%table.table.table-bordered
+  %tr
+    %th
+      Title
+    %th
+      Body
+  - @posts.each do |post|
+    %tr
+      %td
+        =post.title
+      %td
+        =post.body
+
+=link_to "Novo Post", new_admin_post_path

@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %title Ecommerce
+    = stylesheet_link_tag    'admin', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    =render "layouts/admin/header"
+    .container-fluid
+      .row
+        .col-sm-3.col-md-2.sidebar
+          =render "layouts/admin/sidebar"
+        .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+          %h1.page-header=@header
+          =render "layouts/flash"
+          =yield

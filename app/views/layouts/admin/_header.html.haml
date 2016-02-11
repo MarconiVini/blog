@@ -1,0 +1,9 @@
+.navbar.navbar-inverse.navbar-fixed-top
+  .container-fluid
+    .navbar-header
+      =link_to "Admin - #{current_admin.name}", admin_dashboard_path, class: "navbar-brand"
+    .navbar-collapse.collapse
+      .nav.navbar-nav.navbar-right
+        =build_top_links
+        %li
+          = link_to t('sign_out'), destroy_admin_session_path, method: :delete

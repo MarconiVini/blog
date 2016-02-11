@@ -1,0 +1,6 @@
+-if @post.errors.any?
+  .well.alert.alert-danger
+    %p= "Devido à #{pluralize(@post.errors.count, 'erro')}. Não foi possível salvar o post."
+    %ul
+      - @post.errors.full_messages.each do |msg|
+        %li= msg

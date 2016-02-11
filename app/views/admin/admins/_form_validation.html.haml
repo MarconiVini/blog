@@ -1,0 +1,6 @@
+-if @admin.errors.any?
+  .well.alert.alert-danger
+    %p= "Devido à #{pluralize(@admin.errors.count, 'erro')}. Não foi possível salvar o Administrador."
+    %ul
+      - @admin.errors.full_messages.each do |msg|
+        %li= msg
