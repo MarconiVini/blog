@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Post, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:post) { build :post }
+  it "creates a new valid post" do
+    expect{post.save}.to change{Post.count}.from(0).to(1)
+  end
 end
