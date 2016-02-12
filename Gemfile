@@ -38,6 +38,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'faker'
+  gem 'guard-rspec', require: false
 end
 
 group :development do
