@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'redis', '~> 3.0'
 gem 'devise', git: 'git@github.com:plataformatec/devise.git'
 gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
+gem 'redcarpet'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

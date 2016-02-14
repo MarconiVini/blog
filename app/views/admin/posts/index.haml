@@ -4,11 +4,15 @@
       Title
     %th
       Body
+    %th
+      url
   - @posts.each do |post|
     %tr
       %td
         =post.title
       %td
         =post.body
+      %td=post.friendly_url
+
 
 =link_to "Novo Post", new_admin_post_path

@@ -26,9 +26,16 @@ RSpec.describe Post, :type => :model do
 
       describe 'unique url' do
         let!(:valid_post) { Post.create(valid_attr) }
-        let(:invalid_post_with_common_url) { Post.create(valid_attr) }
+        let!(:invalid_post_with_common_url) { Post.create(valid_attr) }
         it 'doesnot allow double posts url' do
-          expect{invalid_post_with_common_url}.not_to change{Post.count}
+          expect(invalid_post_with_common_url.friendly_url).not_to eq valid_post.friendly_url
+        end
+
+        context 'when url already exists' do
+          it 'generates new url valid url' do
+            date = Time.now.strftime("%d-%m-%y")
+            expect(invalid_post_with_common_url.friendly_url).to eq("#{valid_post.friendly_url}-#{date}")
+          end
         end
       end
     end
