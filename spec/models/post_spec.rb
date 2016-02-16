@@ -8,7 +8,7 @@ RSpec.describe Post, :type => :model do
     expect{post.save}.to change{Post.count}.from(0).to(1)
   end
 
-  describe 'save' do
+  describe '#save' do
     describe 'url generation' do
       let(:title) { "Simple Title uniquE " }
       let(:title_latin) { "Não tente AÁàÀâôõãê você" }
@@ -41,12 +41,20 @@ RSpec.describe Post, :type => :model do
     end
   end
 
-  describe 'post finding' do
+  describe '#get_by_url' do
     let!(:valid_post) { create :post }
     let(:post_url) { valid_post.friendly_url }
     
     it 'finds by its url' do
       expect(Post.get_by_url(post_url)).to eql(valid_post)
+    end
+  end
+
+  describe '.render' do
+    let(:valid_post) { create(:post, body: body) }
+    let(:body) { "testing" }
+    it 'renders html from markdown' do
+      expect(valid_post.render).to eq "<p>#{body}</p>\n"
     end
   end
 end

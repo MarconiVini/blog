@@ -6,6 +6,11 @@ class Post < ApplicationRecord
     Post.where("friendly_url = ?", url).first
   end
 
+  def render
+    r = Redcarpet::Markdown.new(Redcarpet::Render::HTML, {})
+    r.render(self.body)
+  end
+
   private
   def generate_friendly_url
     friendly_url = normalize_title

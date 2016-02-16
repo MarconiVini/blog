@@ -17,6 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 
 #better views
 gem 'haml'
+gem 'haml-rails' #generators with haml
 
 gem 'jquery-rails'
 gem 'turbolinks'
