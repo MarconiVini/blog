@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'about/index'
+
   devise_for :admins, controllers: {sessions: 'admin/sessions'},
    :path_names => { :sign_in => "login", :sign_out => "logout" } 
 
