@@ -22,6 +22,7 @@ set :default_env, { rvm_bin_path: '/usr/local/rvm/bin' }
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
+set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
 
 namespace :deploy do
 
@@ -34,12 +35,13 @@ namespace :deploy do
     end
   end
 
-  # desc "installing bundler"
-  # task :install_bundler do
-  #   on roles(:app) do
-  #     execute 'gem install bundler'
-  #   end
-  # end
+  desc "Symlink shared config files"
+  task :symlink_config_files do
+      run "#{ try_sudo } ln -s #{ deploy_to }/shared/config/database.yml #{ current_path }/config/database.yml"
+  end
 
-  # before :deploy, 'deploy:install_bundler'
+  after "deploy", "deploy:symlink_config_files"
+  after "deploy", "deploy:restart"
+  after "deploy", "deploy:cleanup"
+
 end
