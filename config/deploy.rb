@@ -14,6 +14,20 @@ set :use_sudo, false
 set :rails_env, "production"
 set :deploy_via, :copy
 set :rvm_ruby_version, 'ruby-head@blog --create' 
+#puma
+set :puma_state, "#{shared_path}/pids/puma.state"
+set :puma_pid, "#{shared_path}/pids/puma.pid"
+set :puma_bind, "unix://#{shared_path}/sockets/puma.sock"
+set :puma_access_log, "#{shared_path}/log/puma_access.log"
+set :puma_error_log, "#{shared_path}/log/puma_error.log"
+set :puma_role, :app
+set :puma_env, fetch(:rack_env, fetch(:rails_env, 'production'))
+set :puma_threads, [0, 6]
+set :puma_workers, 0
+set :puma_worker_timeout, nil
+set :puma_init_active_record, false
+set :puma_preload_app, false
+set :nginx_use_ssl, false
 
 server "162.243.123.35", roles: [:web, :app, :db], primary: true
 
