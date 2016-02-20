@@ -17,7 +17,10 @@ set :rvm_ruby_version, 'ruby-head@blog --create'
 
 server "162.243.123.35", roles: [:web, :app, :db], primary: true
 
-set :default_env, { rvm_bin_path: '/usr/local/rvm/bin' }
+set :default_env, { 
+  rvm_bin_path: '/usr/local/rvm/bin',
+  RAILS_ENV: 'production'
+}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -35,5 +38,6 @@ namespace :deploy do
     end
   end
 
-  after :deploy, 'puma:restart'
+  after :deploy, 'puma:stop'
+  after :deploy, 'puma:start'
 end
