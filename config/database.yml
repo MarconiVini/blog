@@ -6,6 +6,10 @@ default: &default
   password: qwerty
   host: localhost
 
+production:
+  <<: *default
+  database: blog
+
 development:
   <<: *default
   database: blog_dev
@@ -16,3 +20,5 @@ development:
 test:
   <<: *default
   database: blog_test
+
+
