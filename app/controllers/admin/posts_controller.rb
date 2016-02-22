@@ -32,8 +32,10 @@ class Admin::PostsController < Admin::BaseAdminController
   end
 
   def destroy
-    @admin = Post.find(params[:id])
-    @admin.destroy
+    post = Post.find(params[:id])
+    post.disabled = post.disabled == false
+    post.save
+
     flash[:notice] = "Post foi deletado"
     redirect_to :action => :index
   end

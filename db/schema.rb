@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160212215522) do
+ActiveRecord::Schema.define(version: 20160222193813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,9 +37,11 @@ ActiveRecord::Schema.define(version: 20160212215522) do
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.string   "body"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "friendly_url"
+    t.boolean  "disabled",     default: false
+    t.index ["disabled"], name: "index_posts_on_disabled", using: :btree
     t.index ["friendly_url"], name: "index_posts_on_friendly_url", unique: true, using: :btree
   end
 
