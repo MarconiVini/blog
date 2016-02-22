@@ -8,7 +8,15 @@ RSpec.describe Post, :type => :model do
     expect{post.save}.to change{Post.count}.from(0).to(1)
   end
 
-  describe '#save' do
+  describe '#published' do
+    let!(:published) { create(:post, disabled: false) }
+    let!(:unpublished) { create(:post, disabled: true) }
+    it 'selects only the published posts' do
+      expect(Post.published).to eq [published]
+    end
+  end
+
+  describe '.save' do
     describe 'url generation' do
       let(:title) { "Simple Title uniquE " }
       let(:title_latin) { "Não tente AÁàÀâôõãê você" }
@@ -41,7 +49,7 @@ RSpec.describe Post, :type => :model do
     end
   end
 
-  describe '#get_by_url' do
+  describe '.get_by_url' do
     let!(:valid_post) { create :post }
     let(:post_url) { valid_post.friendly_url }
     
@@ -50,7 +58,7 @@ RSpec.describe Post, :type => :model do
     end
   end
 
-  describe '.render' do
+  describe '#render' do
     let(:valid_post) { create(:post, body: body) }
     let(:body) { "testing" }
     it 'renders html from markdown' do
