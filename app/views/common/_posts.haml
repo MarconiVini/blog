@@ -1,4 +1,4 @@
 - @posts.each do |post|
   %h3=link_to post.title, post_path(post.friendly_url)
 
-  %p=post.body
+  %p=post.render.html_safe
