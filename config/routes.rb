@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # mount ActionCable.server => '/cable'
   root 'home#index'
 
-  resources :posts, only: [:index, :show]
+  resources :posts, only: [:index, :show, :edit]
 
   namespace :admin do
     get 'dashboard' => 'dashboard#index'
