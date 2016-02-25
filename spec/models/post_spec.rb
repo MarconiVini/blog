@@ -39,6 +39,15 @@ RSpec.describe Post, :type => :model do
           expect(invalid_post_with_common_url.friendly_url).not_to eq valid_post.friendly_url
         end
 
+        context 'when updating existing post' do
+          it 'keeps old url' do
+            old_url = valid_post.friendly_url
+            valid_post.body = "blabla"
+            valid_post.save
+            expect(valid_post.friendly_url).to eq old_url
+          end
+        end
+
         context 'when url already exists' do
           it 'generates new url valid url' do
             date = Time.now.strftime("%d-%m-%y")

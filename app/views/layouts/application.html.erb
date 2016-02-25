@@ -11,18 +11,18 @@
 
   <body>
     <div class="container"> 
-      <div class="header">
-        <%= render "layouts/commons/header" %>
+      <div class='header'>
+        <%= render 'layouts/commons/header' %>
       </div>
       <div class="top-menu">
-        <%= render "layouts/commons/top_menu" %>
+        <%= render 'layouts/commons/top_menu' %>
       </div>
-      <%= render "layouts/commons/menu" %>
+      <%= render 'layouts/commons/menu' %>
       
       <%= yield %>
 
       <footer class="footer">
-        <%= render "layouts/commons/footer" %>
+        <%= render 'layouts/commons/footer' %>
       </footer>
     </div>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>

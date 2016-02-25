@@ -2,7 +2,7 @@ require 'rouge/plugins/redcarpet'
 require "assistent/redcarpet_renderer"
 
 class Post < ApplicationRecord
-  before_validation :generate_friendly_url
+  before_validation :generate_friendly_url, if: "self.friendly_url.nil?"
   validates :friendly_url, uniqueness: true
 
   scope :published, -> { where(disabled: false) }
@@ -25,7 +25,7 @@ class Post < ApplicationRecord
       superscript:        true,
       disable_indented_code_blocks: true
     }
-    #TODO - cache this render somewhere
+    # TODO - cache this render somewhere
     r = Redcarpet::Markdown.new(RedcarpetRenderer.new(extensions), options)
     r.render(self.body)
   end
