@@ -61,6 +61,7 @@ RSpec.describe Post, :type => :model do
   describe '#render' do
     let(:valid_post) { create(:post, body: body) }
     let(:body) { "testing" }
+
     it 'renders html from markdown' do
       expect(valid_post.render).to eq "<p>#{body}</p>\n"
     end

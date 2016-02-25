@@ -27,7 +27,11 @@ gem 'jbuilder', '~> 2.0'
 gem 'redis', '~> 3.0'
 gem 'devise', git: 'git@github.com:plataformatec/devise.git'
 gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
+
+#markdown
 gem 'redcarpet'
+#styles for codeblocks
+gem 'rouge'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -50,7 +54,7 @@ group :development do
   gem 'capistrano',         require: false
   gem 'capistrano-rails',   require: false
   gem 'capistrano-rvm',     require: false
-  gem 'capistrano3-puma',    require: false
+  gem 'capistrano3-puma',   require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

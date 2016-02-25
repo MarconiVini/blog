@@ -1,3 +1,6 @@
+require 'rouge/plugins/redcarpet'
+require "assistent/redcarpet_renderer"
+
 class Post < ApplicationRecord
   before_validation :generate_friendly_url
   validates :friendly_url, uniqueness: true
@@ -9,7 +12,21 @@ class Post < ApplicationRecord
   end
 
   def render
-    r = Redcarpet::Markdown.new(Redcarpet::Render::HTML, {})
+    options = {
+      filter_html:     true,
+      hard_wrap:       true, 
+      link_attributes: { rel: 'nofollow', target: "_blank" },
+      space_after_headers: true, 
+      fenced_code_blocks: true
+    }
+
+    extensions = {
+      autolink:           false,
+      superscript:        true,
+      disable_indented_code_blocks: true
+    }
+    #TODO - cache this render somewhere
+    r = Redcarpet::Markdown.new(RedcarpetRenderer.new(extensions), options)
     r.render(self.body)
   end
 
