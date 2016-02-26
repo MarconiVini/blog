@@ -5,5 +5,9 @@
   .form-group
     =f.label :body
     =f.text_area :body, class: "form-control post-textarea"
+  .checkbox
+    =f.label :published do
+      =f.check_box :published, class: ""
+      published?
   .form-group
     =f.submit class: "btn btn-default"
