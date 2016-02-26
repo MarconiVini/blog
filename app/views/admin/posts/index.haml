@@ -9,14 +9,14 @@
     %th
       edit
     %th
-      disable/enable
+      unpublish/publish
   - @posts.each do |post|
-    %tr{ class: post.disabled ? "danger" : "" }
+    %tr{ class: post.published ? "" : "danger" }
       %td=post.title
       %td=post.friendly_url
       %td=post.body
       %td=link_to "editar", edit_admin_post_path(post), class: "btn btn-default"
-      %td=link_to (post.disabled ? "enable" : "disable"), admin_post_path(post), method: :delete, class: (post.disabled ? "btn btn-default" : "btn btn-danger")
+      %td=link_to (post.published ? "draft" : "publish"), admin_post_path(post), method: :delete, class: (post.published ? "btn btn-danger" : "btn btn-default")
 
 =paginate @posts
 

@@ -2,10 +2,10 @@ FactoryGirl.define do
   factory :post do
     title { Faker::Name.title }
     body { Faker::Lorem.paragraph }
-    disabled false
+    published false
     
-    factory :unpublished_post do
-      disabled true
+    factory :published_post do
+      published true
     end
   end
 end

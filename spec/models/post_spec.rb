@@ -9,10 +9,32 @@ RSpec.describe Post, :type => :model do
   end
 
   describe '#published' do
-    let!(:published) { create(:post, disabled: false) }
-    let!(:unpublished) { create(:post, disabled: true) }
+    let!(:unpublished) { create(:post, published: false) }
+    let!(:published) { create(:post, published: true) }
     it 'selects only the published posts' do
       expect(Post.published).to eq [published]
+    end
+  end
+
+  describe 'ordenation' do
+    Timecop.freeze(Date.today) do
+      let!(:published) { create(:post, published: true) }
+    end
+
+    Timecop.freeze(Date.today - 1) do
+      let!(:published_middle) { create(:post, published: true) }
+    end
+
+    Timecop.freeze(Date.today - 20) do
+      let!(:published_last) { create(:post, published: true) }
+    end
+
+    it 'gets first ordered by date' do
+      expect(Post.published.first).to eq published 
+    end
+
+    it 'gets last ordered by date' do
+      expect(Post.published.last).to eq published_last
     end
   end
 

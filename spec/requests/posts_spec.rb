@@ -4,10 +4,10 @@ RSpec.describe "HomePosts", :type => :request do
   let!(:post) { create(:post) }
 
   describe "GET index" do
-    let!(:post_unpublished) { create(:unpublished_post) }
+    let!(:post_published) { create(:published_post) }
     it "returns published posts" do
       get "/"
-      expect(assigns(:posts)).to eq([post])
+      expect(assigns(:posts)).to eq([post_published])
     end
   end
 

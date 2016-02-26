@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   before_validation :generate_friendly_url, if: "self.friendly_url.nil?"
   validates :friendly_url, uniqueness: true
 
-  scope :published, -> { where(disabled: false) }
+  scope :published, -> { where(published: true).order(created_at: :asc) }
 
   def Post.get_by_url(url)
     Post.where("friendly_url = ?", url).first
