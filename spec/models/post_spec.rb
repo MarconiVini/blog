@@ -16,28 +16,6 @@ RSpec.describe Post, :type => :model do
     end
   end
 
-  describe 'ordenation' do
-    Timecop.freeze(Date.today) do
-      let!(:published) { create(:post, published: true) }
-    end
-
-    Timecop.freeze(Date.today - 1) do
-      let!(:published_middle) { create(:post, published: true) }
-    end
-
-    Timecop.freeze(Date.today - 20) do
-      let!(:published_last) { create(:post, published: true) }
-    end
-
-    it 'gets first ordered by date' do
-      expect(Post.published.first).to eq published 
-    end
-
-    it 'gets last ordered by date' do
-      expect(Post.published.last).to eq published_last
-    end
-  end
-
   describe '.save' do
     describe 'url generation' do
       let(:title) { "Simple Title uniquE " }
