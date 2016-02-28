@@ -2,3 +2,7 @@
   %h3=link_to post.title, post_path(post.friendly_url)
 
   %p=post.render.html_safe
+  %p.italic.text-right
+    %span published in: 
+    =render_time_published(post.created_at)
+  %hr
