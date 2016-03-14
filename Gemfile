@@ -1,9 +1,11 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '>= 5.0.0.beta2', '< 5.1'
+gem 'rails', '>= 5.0.0.beta3', '< 5.1'
 gem 'pg'
+gem 'mongoid', :git => 'https://github.com/xzgyb/mongoid-for-rails5.git'
+
 gem 'bootstrap-sass'
 
 # Use Puma as the app server
@@ -28,6 +30,10 @@ gem 'redis', '~> 3.0'
 gem 'devise', git: 'git@github.com:plataformatec/devise.git'
 gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
 
+# file uploader
+gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
+gem 'rmagick'
+
 #markdown
 gem 'redcarpet'
 #styles for codeblocks
@@ -44,6 +50,8 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'faker'
   gem 'guard-rspec', require: false
+  gem 'mongoid-rspec', '3.0.0'
+  gem 'database_cleaner'
 end
 
 group :development do

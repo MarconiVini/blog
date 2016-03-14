@@ -1,7 +1,10 @@
 require 'rouge/plugins/redcarpet'
 require "assistent/redcarpet_renderer"
 
-class Post < ApplicationRecord
+class Post
+  
+
+  
   before_validation :generate_friendly_url, if: "self.friendly_url.nil?"
   validates :friendly_url, uniqueness: true
 
