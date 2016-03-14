@@ -1,5 +1,7 @@
 ---
 pt-BR:
+  cool_mensage: "Aquela linha de código que deveria retornar true..."
+  about_me: "sobre mim"
   activerecord:
     errors:
       messages:
