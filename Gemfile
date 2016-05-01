@@ -4,7 +4,7 @@ source 'http://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>= 5.0.0.beta3', '< 5.1'
 gem 'pg'
-gem 'mongoid', :git => 'https://github.com/xzgyb/mongoid-for-rails5.git'
+gem 'mongoid'
 
 gem 'bootstrap-sass'
 
@@ -27,8 +27,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # Action Cable dependencies for the Redis adapter
 gem 'redis', '~> 3.0'
-gem 'devise', git: 'git@github.com:plataformatec/devise.git'
-gem 'kaminari', :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
+gem 'devise'#, git: 'git@github.com:plataformatec/devise.git'
+gem 'kaminari'#, :git => "git://github.com/amatsuda/kaminari.git", :branch => 'master'
 
 # file uploader
 gem 'carrierwave-mongoid', require: 'carrierwave/mongoid'
@@ -50,13 +50,13 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'faker'
   gem 'guard-rspec', require: false
-  gem 'mongoid-rspec', '3.0.0'
+  gem 'mongoid-rspec'
   gem 'database_cleaner'
 end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 3.0'
+  gem 'web-console'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'capistrano',         require: false
